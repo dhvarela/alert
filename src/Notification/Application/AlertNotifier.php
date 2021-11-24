@@ -37,7 +37,7 @@ final class AlertNotifier
         foreach ($items as $subscriberAlertChannel) {
             $subscriber             = $subscriberAlertChannel->getSubscriber();
             $channel                = $subscriberAlertChannel->getChannel();
-            $channelNotifierService = $this->notifierServiceFactory::create($channel);
+            $channelNotifierService = $this->notifierServiceFactory->create($channel);
 
             // TODO implement service subscriberChannelConfigParametersFinder
             //      allowing to get config params given a subscriber and a channel

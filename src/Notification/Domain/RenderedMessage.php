@@ -6,7 +6,7 @@ namespace App\Notification\Domain;
 
 final class RenderedMessage
 {
-    private $message;
+    private string $message;
 
     public function __construct(string $message)
     {

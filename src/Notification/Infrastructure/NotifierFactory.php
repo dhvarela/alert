@@ -13,7 +13,7 @@ use InvalidArgumentException;
 
 final class NotifierFactory implements NotifierServiceFactory
 {
-    public static function create(Channel $channel): Notifier
+    public function create(Channel $channel): Notifier
     {
         if ($channel->getName() === Channel::CHANNEL_EMAIL) {
             return new EmailNotifier();
