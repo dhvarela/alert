@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Alert\Application;
+namespace App\Alert\Domain;
 
 use JsonSerializable;
 
@@ -13,14 +13,14 @@ final class AlertCheckerResponse implements JsonSerializable
     private $error;
 
     public function __construct(
-        bool $success,
-        bool $sendNotification,
+        bool    $success,
+        bool    $sendNotification,
         ?string $error
     )
     {
-        $this->success              = $success;
-        $this->sendNotification     = $sendNotification;
-        $this->error                = $error;
+        $this->success          = $success;
+        $this->sendNotification = $sendNotification;
+        $this->error            = $error;
     }
 
     public function isSuccess(): bool

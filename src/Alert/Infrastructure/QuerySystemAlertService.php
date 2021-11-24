@@ -2,9 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Alert\Application;
+namespace App\Alert\Infrastructure;
 
 use App\Alert\Domain\Alert;
+use App\Alert\Domain\AlertCheckerResponse;
 use App\Alert\Domain\AlertService;
 
 final class QuerySystemAlertService implements AlertService

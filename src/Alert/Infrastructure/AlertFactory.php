@@ -2,15 +2,16 @@
 
 declare(strict_types=1);
 
-namespace App\Alert\Application;
+namespace App\Alert\Infrastructure;
 
 use App\Alert\Domain\AlertService;
 use App\Alert\Domain\AlertType;
+use App\Notification\Domain\AlertServiceFactory;
 use InvalidArgumentException;
 
-final class AlertServiceFactory
+final class AlertFactory implements AlertServiceFactory
 {
-    public static function create(AlertType $type): AlertService
+    public function create(AlertType $type): AlertService
     {
         if ($type->getName() === AlertType::QUERY_SYSTEM) {
             return new QuerySystemAlertService();

@@ -6,21 +6,25 @@ namespace App\Alert\Application;
 
 use App\Alert\Domain\Alert;
 use App\Alert\Domain\AlertRepository;
+use App\Alert\Infrastructure\AlertFactory;
 use App\Service\Notification\AlertNotifier;
 
 class AlertChecker
 {
-    private $repository;
-    private $alertTotalConfigParametersFinder;
-    private $notifier;
+    private AlertRepository $repository;
+    private AlertFactory $alertServiceFactory;
+    private AlertTotalConfigParametersFinder $alertTotalConfigParametersFinder;
+    private AlertNotifier $notifier;
 
     public function __construct(
         AlertRepository                  $repository,
+        AlertFactory                     $alertServiceFactory,
         AlertTotalConfigParametersFinder $alertTotalConfigParametersFinder,
         AlertNotifier                    $notifier
     )
     {
         $this->repository                       = $repository;
+        $this->alertServiceFactory              = $alertServiceFactory;
         $this->alertTotalConfigParametersFinder = $alertTotalConfigParametersFinder;
         $this->notifier                         = $notifier;
     }
@@ -37,7 +41,7 @@ class AlertChecker
             }
 
             $configParams        = $this->alertTotalConfigParametersFinder->execute($anAlert);
-            $alertCheckerService = AlertServiceFactory::create($anAlert->getAlertType());
+            $alertCheckerService = $this->alertServiceFactory->create($anAlert->getAlertType());
 
             $alertCheckerResponse = $alertCheckerService->check($anAlert, $configParams);
 

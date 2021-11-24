@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Alert\Infrastructure;
+namespace App\Alert\Infrastructure\Persistence;
 
 use App\Alert\Domain\AlertRepository;
 
