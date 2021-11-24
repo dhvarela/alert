@@ -12,6 +12,7 @@ final class QuerySystemAlertService implements AlertService
 {
     public function check(Alert $alert, array $params): AlertCheckerResponse
     {
-        // TODO: Implement check() method.
+        // TODO: Implement check() method. It should do a query to the specified database and return a boolean result parameter
+        //      If query result is true, alert should be notified
     }
 }

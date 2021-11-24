@@ -13,7 +13,8 @@ final class DomainCheckerAlertService implements AlertService
 
     public function check(Alert $alert, array $params): AlertCheckerResponse
     {
-        // TODO: Implement check() method.
+        // TODO: Implement check() method. It should check if a given domain is up or down on the internet. If is down,
+        //      an alert should be sent, if is up, return false in sendNotification parameter from AlertCheckerResponse
     }
 
 }
